@@ -102,13 +102,15 @@ export default function SettingsPage() {
             </button>
 
             <div className="mt-6 pt-6 border-t border-indigo-500/20">
-              <h4 className="text-sm font-semibold text-slate-300 mb-3 text-center">Telefondan Test Et</h4>
+              <h4 className="text-sm font-semibold text-slate-300 mb-3 text-center">Telefondan Eriş</h4>
               <div className="bg-white p-3 rounded-xl inline-block w-full flex justify-center">
-                <QRCode value={`http://192.168.0.3:${window.location.port}`} size={150} />
+                <QRCode value="https://kolay-gider.vercel.app" size={150} />
               </div>
               <p className="text-xs text-slate-400 mt-3 text-center">
-                Telefonunuzun kamerasıyla bu kodu okutarak yerel ağ üzerinden uygulamaya erişebilirsiniz. <br/>
-                <span className="text-indigo-400 mt-1 inline-block">Not: Bilgisayarınız ve telefonunuz aynı Wi-Fi ağına bağlı olmalıdır. Terminalde projeyi yeniden başlatmanız gerekebilir.</span>
+                Telefonunuzun kamerasıyla bu kodu okutarak uygulamaya her yerden erişebilirsiniz.
+                <br /><br />
+                <span className="text-amber-400 font-semibold">iPhone (Safari) Kullanıcıları İçin Not:</span><br />
+                Apple'ın güvenlik kuralları gereği uygulamayı butonla indiremezsiniz. Tarayıcının alt menüsündeki <span className="font-bold text-white bg-slate-800 px-1 rounded">Paylaş ↗</span> ikonuna dokunup <span className="font-bold text-white bg-slate-800 px-1 rounded">Ana Ekrana Ekle +</span> seçeneğini kullanmalısınız.
               </p>
             </div>
           </div>
