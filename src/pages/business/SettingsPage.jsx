@@ -178,11 +178,11 @@ export default function SettingsPage() {
             </button>
 
             <div className="mt-6 pt-6 border-t border-indigo-500/20">
-              <h4 className="text-sm font-semibold text-slate-300 mb-3 text-center">Telefondan Eriş</h4>
-              <div className="bg-white p-3 rounded-xl inline-block w-full flex justify-center">
-                <QRCode value="https://kolay-gider.vercel.app" size={150} />
+              <h4 className="text-sm font-semibold text-slate-300 mb-4 text-center">Telefondan Eriş</h4>
+              <div className="bg-white p-4 rounded-2xl mx-auto w-max shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-transform hover:scale-105 duration-300">
+                <QRCode value="https://kolay-gider.vercel.app" size={130} style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
               </div>
-              <p className="text-xs text-slate-400 mt-3 text-center">
+              <p className="text-xs text-slate-400 mt-4 text-center">
                 Telefonunuzun kamerasıyla bu kodu okutarak uygulamaya her yerden erişebilirsiniz.
                 <br /><br />
                 <span className="text-amber-400 font-semibold">iPhone (Safari) Kullanıcıları İçin Not:</span><br />
