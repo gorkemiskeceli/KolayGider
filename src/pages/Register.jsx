@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowRight, Mail, Lock, User, Building2, Phone } from 'lucide-react';
+import { ArrowRight, Mail, Lock, User, Building2, Phone, Check } from 'lucide-react';
 
 export default function Register() {
   const navigate = useNavigate();
