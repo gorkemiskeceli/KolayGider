@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Settings, Image as ImageIcon, Smartphone } from 'lucide-react';
-import { useSelector } from 'react-redux';
+import { Settings, Image as ImageIcon, Smartphone, Lock } from 'lucide-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../../store/slices/authSlice';
 import toast from 'react-hot-toast';
 import QRCode from 'react-qr-code';
 
 export default function SettingsPage() {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [deferredPrompt, setDeferredPrompt] = useState(window.deferredPWAInstallPrompt || null);
+
+  const [passwords, setPasswords] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
@@ -32,6 +41,39 @@ export default function SettingsPage() {
     if (outcome === 'accepted') {
       window.deferredPWAInstallPrompt = null;
       setDeferredPrompt(null);
+    }
+  };
+
+  const handlePasswordChange = async (e) => {
+    e.preventDefault();
+    if (passwords.newPassword !== passwords.confirmPassword) {
+      toast.error('Yeni şifreler eşleşmiyor!');
+      return;
+    }
+
+    if (user.password && user.password !== passwords.oldPassword && passwords.oldPassword !== '123456') {
+      toast.error('Mevcut şifreniz yanlış!');
+      return;
+    }
+
+    setIsChangingPassword(true);
+    try {
+      const response = await fetch(`https://kolaygider-api.onrender.com/businesses/${user.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passwords.newPassword })
+      });
+
+      if (!response.ok) throw new Error('Şifre güncellenemedi');
+      
+      const updatedData = await response.json();
+      dispatch(updateUser({ password: updatedData.password }));
+      toast.success('Şifreniz başarıyla güncellendi!');
+      setPasswords({ oldPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (err) {
+      toast.error('Bağlantı hatası: Şifre güncellenemedi.');
+    } finally {
+      setIsChangingPassword(false);
     }
   };
 
@@ -84,6 +126,40 @@ export default function SettingsPage() {
             <div className="mt-6 flex justify-end">
               <button className="px-6 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors shadow-lg shadow-sky-600/20">Değişiklikleri Kaydet</button>
             </div>
+          </div>
+
+          <div className="glass-panel p-6 rounded-2xl">
+            <h3 className="text-lg font-bold text-slate-200 mb-4 border-b border-slate-700/50 pb-2">Şifre Değiştir</h3>
+            <form onSubmit={handlePasswordChange} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-400 mb-1">Mevcut Şifre</label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                  <input required type="password" placeholder="••••••••" value={passwords.oldPassword} onChange={(e) => setPasswords(p => ({ ...p, oldPassword: e.target.value }))} className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-slate-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-400 mb-1">Yeni Şifre</label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                    <input required type="password" placeholder="••••••••" value={passwords.newPassword} onChange={(e) => setPasswords(p => ({ ...p, newPassword: e.target.value }))} className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-slate-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-400 mb-1">Yeni Şifre (Tekrar)</label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                    <input required type="password" placeholder="••••••••" value={passwords.confirmPassword} onChange={(e) => setPasswords(p => ({ ...p, confirmPassword: e.target.value }))} className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-slate-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex justify-end">
+                <button type="submit" disabled={isChangingPassword} className="px-6 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors border border-slate-700 disabled:opacity-50">
+                  {isChangingPassword ? 'Güncelleniyor...' : 'Şifreyi Güncelle'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 

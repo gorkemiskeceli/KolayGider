@@ -21,8 +21,14 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       localStorage.removeItem('kolaygider_user');
     },
+    updateUser: (state, action) => {
+      if (state.user) {
+        state.user = { ...state.user, ...action.payload };
+        localStorage.setItem('kolaygider_user', JSON.stringify(state.user));
+      }
+    }
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, updateUser } = authSlice.actions;
 export default authSlice.reducer;

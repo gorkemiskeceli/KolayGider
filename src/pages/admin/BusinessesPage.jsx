@@ -1,11 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Plus, MoreVertical, Edit2, ShieldAlert, CheckCircle } from 'lucide-react';
-import { fetchBusinesses, updateBusinessStatus } from '../../store/slices/businessSlice';
+import { Plus, MoreVertical, Edit2, ShieldAlert, CheckCircle, Trash2 } from 'lucide-react';
+import { fetchBusinesses, updateBusinessStatus, deleteBusiness } from '../../store/slices/businessSlice';
+import ConfirmModal from '../../components/modals/ConfirmModal';
+import BusinessModal from '../../components/modals/BusinessModal';
 
 export default function BusinessesPage() {
   const dispatch = useDispatch();
   const { items: businesses, status } = useSelector((state) => state.business);
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedBusiness, setSelectedBusiness] = useState(null);
+
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -15,6 +22,18 @@ export default function BusinessesPage() {
 
   const handleApprove = (id) => {
     dispatch(updateBusinessStatus({ id, status: 'active' }));
+  };
+
+  const handleEdit = (business) => {
+    setSelectedBusiness(business);
+    setIsEditModalOpen(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (deleteTarget) {
+      dispatch(deleteBusiness(deleteTarget.id));
+      setDeleteTarget(null);
+    }
   };
 
   const pendingBusinesses = businesses.filter(b => b.status === 'pending');
@@ -103,8 +122,8 @@ export default function BusinessesPage() {
                   </td>
                   <td className="px-6 py-4 text-slate-400">{new Date(biz.createdAt).toLocaleDateString('tr-TR')}</td>
                   <td className="px-6 py-4 flex justify-end gap-2">
-                    <button className="p-1.5 text-slate-400 hover:text-sky-400 bg-slate-800 rounded-md transition-colors"><Edit2 size={16} /></button>
-                    <button className="p-1.5 text-slate-400 hover:text-rose-400 bg-slate-800 rounded-md transition-colors"><ShieldAlert size={16} /></button>
+                    <button onClick={() => handleEdit(biz)} className="p-1.5 text-slate-400 hover:text-sky-400 bg-slate-800 rounded-md transition-colors"><Edit2 size={16} /></button>
+                    <button onClick={() => setDeleteTarget(biz)} className="p-1.5 text-slate-400 hover:text-rose-400 bg-slate-800 rounded-md transition-colors"><Trash2 size={16} /></button>
                   </td>
                 </tr>
               ))}
@@ -117,6 +136,23 @@ export default function BusinessesPage() {
           </table>
         </div>
       </div>
+
+      <BusinessModal 
+        isOpen={isEditModalOpen} 
+        onClose={() => {
+          setIsEditModalOpen(false);
+          setSelectedBusiness(null);
+        }} 
+        business={selectedBusiness} 
+      />
+
+      <ConfirmModal 
+        isOpen={!!deleteTarget}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={handleDeleteConfirm}
+        title="İşletmeyi Sil"
+        message={`${deleteTarget?.businessName} adlı işletmeyi tamamen silmek istediğinize emin misiniz? Bu işlem geri alınamaz ve işletmeye ait tüm veriler silinir.`}
+      />
     </div>
   );
 }

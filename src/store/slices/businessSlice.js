@@ -20,6 +20,31 @@ export const updateBusinessStatus = createAsyncThunk(
   }
 );
 
+export const updateBusiness = createAsyncThunk(
+  'business/updateBusiness',
+  async (business) => {
+    const { id, ...data } = business;
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) throw new Error('Update failed');
+    return response.json();
+  }
+);
+
+export const deleteBusiness = createAsyncThunk(
+  'business/deleteBusiness',
+  async (id) => {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) throw new Error('Delete failed');
+    return id;
+  }
+);
+
 const initialState = {
   items: [],
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
@@ -48,6 +73,15 @@ const businessSlice = createSlice({
         if (index !== -1) {
           state.items[index] = action.payload;
         }
+      })
+      .addCase(updateBusiness.fulfilled, (state, action) => {
+        const index = state.items.findIndex(b => b.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(deleteBusiness.fulfilled, (state, action) => {
+        state.items = state.items.filter(b => b.id !== action.payload);
       });
   },
 });
