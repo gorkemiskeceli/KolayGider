@@ -1,0 +1,446 @@
+{
+  "super_admin": {
+    "id": "sa_1",
+    "email": "admin@kolaygider.com",
+    "role": "SUPER_ADMIN",
+    "name": "Super Admin"
+  },
+  "businesses": [
+    {
+      "id": "biz_101",
+      "ownerName": "Ahmet Yılmaz",
+      "businessName": "Yılmaz Restoran",
+      "email": "ahmet@yilmazrestoran.com",
+      "phone": "05321112233",
+      "status": "active",
+      "tier": "Pro",
+      "createdAt": "2026-01-15T10:00:00Z"
+    },
+    {
+      "id": "biz_102",
+      "ownerName": "Ayşe Kaya",
+      "businessName": "Kaya Terzi",
+      "email": "ayse@kayaterzi.com",
+      "phone": "05334445566",
+      "status": "active",
+      "tier": "Basic",
+      "createdAt": "2026-03-10T14:30:00Z"
+    },
+    {
+      "id": "biz_103",
+      "ownerName": "Mehmet Çelik",
+      "businessName": "Çelik Otomotiv",
+      "email": "iletisim@celikoto.com",
+      "phone": "05356667788",
+      "status": "suspended",
+      "tier": "Enterprise",
+      "createdAt": "2025-11-20T09:00:00Z"
+    },
+    {
+      "id": "biz_104",
+      "ownerName": "Zeynep Arslan",
+      "businessName": "Zeynep Kuaför",
+      "email": "info@zeynepkuafor.com",
+      "phone": "05449998877",
+      "status": "active",
+      "tier": "Basic",
+      "createdAt": "2026-06-01T15:20:00Z"
+    },
+    {
+      "businessName": "test restorant",
+      "ownerName": "görkem iskeçeli",
+      "email": "test@gmail.com",
+      "phone": "05077114750",
+      "password": "test123",
+      "id": "kLcDj-skIaM",
+      "status": "active",
+      "tier": "Basic",
+      "createdAt": "2026-07-17T13:30:27.871Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "exp_1",
+      "businessId": "biz_101",
+      "title": "Toptancı - Et Alımı",
+      "amount": 12500,
+      "date": "2026-07-15T09:00:00Z",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Havale/EFT",
+      "status": "paid",
+      "receiptUrl": "mock_receipt_1.jpg",
+      "type": "gider"
+    },
+    {
+      "id": "exp_2",
+      "businessId": "biz_101",
+      "title": "Elektrik Faturası",
+      "amount": 4200,
+      "date": "2026-07-20T10:00:00Z",
+      "categoryId": "cat_1_2",
+      "paymentMethod": "Kredi Kartı",
+      "status": "pending",
+      "receiptUrl": null,
+      "type": "gider"
+    },
+    {
+      "id": "exp_3",
+      "businessId": "biz_101",
+      "title": "Günlük Satış (Nakit)",
+      "amount": 18500,
+      "date": "2026-07-16T18:00:00Z",
+      "categoryId": "cat_1_4",
+      "paymentMethod": "Nakit",
+      "status": "paid",
+      "receiptUrl": null,
+      "type": "gelir"
+    },
+    {
+      "id": "exp_4",
+      "businessId": "biz_101",
+      "title": "Su Faturası",
+      "amount": 1100,
+      "date": "2026-07-22T08:00:00Z",
+      "categoryId": "cat_1_2",
+      "paymentMethod": "Otomatik Ödeme",
+      "status": "pending",
+      "receiptUrl": null,
+      "type": "gider"
+    },
+    {
+      "id": "exp_5",
+      "businessId": "biz_101",
+      "title": "Kurye Ödemesi",
+      "amount": 450,
+      "date": "2026-07-14T14:30:00Z",
+      "categoryId": "cat_1_5",
+      "paymentMethod": "Nakit",
+      "status": "paid",
+      "receiptUrl": "mock_receipt_2.jpg",
+      "type": "gider"
+    },
+    {
+      "id": "exp_6",
+      "businessId": "biz_101",
+      "title": "POS Tahsilatı (Trendyol Yemek)",
+      "amount": 22400,
+      "date": "2026-07-17T09:00:00Z",
+      "categoryId": "cat_1_4",
+      "paymentMethod": "Banka",
+      "status": "paid",
+      "receiptUrl": null,
+      "type": "gelir"
+    },
+    {
+      "id": "exp_7",
+      "businessId": "biz_101",
+      "title": "Mutfak Ekipmanı Bakımı",
+      "amount": 3200,
+      "date": "2026-07-25T11:00:00Z",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "status": "pending",
+      "receiptUrl": null,
+      "type": "gider"
+    },
+    {
+      "id": "exp_3_biz102",
+      "businessId": "biz_102",
+      "title": "Kumaş Alımı (Toptan)",
+      "amount": 8500,
+      "date": "2026-07-10T11:00:00Z",
+      "categoryId": "cat_2_1",
+      "paymentMethod": "Kredi Kartı",
+      "status": "paid",
+      "receiptUrl": null,
+      "type": "gider"
+    },
+    {
+      "title": "market ",
+      "amount": 200,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Nakit",
+      "type": "gider",
+      "status": "paid",
+      "id": "9pKRpm5u-qg",
+      "receiptUrl": null
+    },
+    {
+      "title": "market",
+      "amount": 200,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gider",
+      "status": "paid",
+      "id": "YakgButLIfM",
+      "receiptUrl": null
+    },
+    {
+      "title": "maaş",
+      "amount": 100000,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gelir",
+      "status": "paid",
+      "id": "Zu-XEtBGimc",
+      "receiptUrl": null
+    },
+    {
+      "title": "test gider",
+      "amount": 10000,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gider",
+      "status": "paid",
+      "id": "-b3hv3Wxk60",
+      "receiptUrl": null
+    },
+    {
+      "title": "test gelir",
+      "amount": 100000,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gelir",
+      "status": "paid",
+      "id": "tfZOuQTUrVw",
+      "receiptUrl": null
+    },
+    {
+      "title": "kira",
+      "amount": 10000,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gider",
+      "status": "paid",
+      "id": "w2JZFT_tE9U",
+      "receiptUrl": null
+    },
+    {
+      "title": "maaş",
+      "amount": 100000,
+      "date": "2026-07-17",
+      "categoryId": "cat_1_1",
+      "paymentMethod": "Kredi Kartı",
+      "type": "gelir",
+      "status": "paid",
+      "id": "_3N32gMI2fU",
+      "receiptUrl": null
+    }
+  ],
+  "recurring_payments": [
+    {
+      "id": "rec_1",
+      "businessId": "biz_101",
+      "title": "Dükkan Kirası",
+      "amount": 25000,
+      "categoryId": "cat_1_3",
+      "period": "monthly",
+      "nextDueDate": "2026-08-01T00:00:00Z",
+      "autoPay": false
+    },
+    {
+      "id": "rec_2",
+      "businessId": "biz_101",
+      "title": "İnternet",
+      "amount": 350,
+      "categoryId": "cat_1_2",
+      "period": "monthly",
+      "nextDueDate": "2026-07-28T00:00:00Z",
+      "autoPay": true
+    },
+    {
+      "id": "rec_3",
+      "businessId": "biz_101",
+      "title": "Muhasebe Ücreti",
+      "amount": 1500,
+      "categoryId": "cat_1_5",
+      "period": "monthly",
+      "nextDueDate": "2026-07-30T00:00:00Z",
+      "autoPay": false
+    },
+    {
+      "title": "ev kirası",
+      "amount": 10000,
+      "period": "monthly",
+      "nextDueDate": "2026-07-17",
+      "id": "GWfb6WO83gs",
+      "status": "active"
+    },
+    {
+      "title": "ev kirası",
+      "amount": 10000,
+      "period": "monthly",
+      "nextDueDate": "2026-07-17",
+      "id": "uhqTaxWxjM0",
+      "status": "active"
+    },
+    {
+      "title": "kira",
+      "amount": 10000,
+      "period": "monthly",
+      "nextDueDate": "2026-07-20",
+      "id": "M1NJlfVl4Eo",
+      "status": "active"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_1_1",
+      "businessId": "biz_101",
+      "name": "Mutfak & Gıda",
+      "color": "#f59e0b",
+      "icon": "Utensils",
+      "budgetLimit": 50000,
+      "type": "gider"
+    },
+    {
+      "id": "cat_1_2",
+      "businessId": "biz_101",
+      "name": "Faturalar",
+      "color": "#3b82f6",
+      "icon": "Zap",
+      "budgetLimit": 10000,
+      "type": "gider"
+    },
+    {
+      "id": "cat_1_3",
+      "businessId": "biz_101",
+      "name": "Kira",
+      "color": "#ef4444",
+      "icon": "Home",
+      "budgetLimit": 25000,
+      "type": "gider"
+    },
+    {
+      "id": "cat_1_4",
+      "businessId": "biz_101",
+      "name": "Satışlar",
+      "color": "#10b981",
+      "icon": "TrendingUp",
+      "budgetLimit": null,
+      "type": "gelir"
+    },
+    {
+      "id": "cat_1_5",
+      "businessId": "biz_101",
+      "name": "Diğer",
+      "color": "#8b5cf6",
+      "icon": "MoreHorizontal",
+      "budgetLimit": 5000,
+      "type": "gider"
+    },
+    {
+      "id": "cat_2_1",
+      "businessId": "biz_102",
+      "name": "Malzeme",
+      "color": "#10b981",
+      "icon": "ShoppingBag",
+      "budgetLimit": 20000,
+      "type": "gider"
+    },
+    {
+      "name": "ofis malzemeleri",
+      "budgetLimit": 10000,
+      "color": "#ef4444",
+      "type": "gider",
+      "id": "Xu23HZJ5FvI"
+    },
+    {
+      "name": "ofis mal",
+      "budgetLimit": 10000,
+      "color": "#0ea5e9",
+      "type": "gider",
+      "id": "3g-F-LrAUuA"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "bud_1",
+      "businessId": "biz_101",
+      "month": "2026-07",
+      "totalBudget": 85000
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "log_1",
+      "userId": "sa_1",
+      "action": "BUSINESS_CREATED",
+      "target": "biz_102",
+      "timestamp": "2026-03-10T14:30:00Z",
+      "details": "Kaya Terzi işletmesi Basic paket ile oluşturuldu."
+    },
+    {
+      "id": "log_2",
+      "userId": "sa_1",
+      "action": "TIER_UPGRADE",
+      "target": "biz_101",
+      "timestamp": "2026-05-20T10:15:00Z",
+      "details": "Yılmaz Restoran paketi Pro olarak güncellendi."
+    },
+    {
+      "id": "log_3",
+      "userId": "sa_1",
+      "action": "BUSINESS_SUSPENDED",
+      "target": "biz_103",
+      "timestamp": "2026-06-15T16:20:00Z",
+      "details": "Çelik Otomotiv ödeme gecikmesi nedeniyle askıya alındı."
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_1",
+      "businessId": "biz_101",
+      "plan": "Pro",
+      "status": "active",
+      "price": 500,
+      "billingCycle": "monthly",
+      "nextBillingDate": "2026-08-15T00:00:00Z"
+    },
+    {
+      "id": "sub_2",
+      "businessId": "biz_102",
+      "plan": "Basic",
+      "status": "active",
+      "price": 150,
+      "billingCycle": "yearly",
+      "nextBillingDate": "2027-03-10T00:00:00Z"
+    },
+    {
+      "id": "sub_3",
+      "businessId": "biz_103",
+      "plan": "Enterprise",
+      "status": "past_due",
+      "price": 1500,
+      "billingCycle": "monthly",
+      "nextBillingDate": "2026-06-20T00:00:00Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tic_1",
+      "businessId": "biz_101",
+      "subject": "Fatura modülü e-dönüşüm hatası",
+      "status": "open",
+      "priority": "high",
+      "createdAt": "2026-07-16T10:00:00Z",
+      "description": "E-arşiv faturası keserken sistem hata veriyor, acil destek."
+    },
+    {
+      "id": "tic_2",
+      "businessId": "biz_104",
+      "subject": "Paket yükseltme hakkında",
+      "status": "resolved",
+      "priority": "low",
+      "createdAt": "2026-07-10T14:30:00Z",
+      "description": "Basic paketten Pro pakete geçersem verilerim silinir mi?"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
