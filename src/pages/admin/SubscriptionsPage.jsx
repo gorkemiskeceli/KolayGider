@@ -5,7 +5,7 @@ export default function SubscriptionsPage() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/subscriptions')
+    fetch('https://kolaygider-api.onrender.com/subscriptions')
       .then(r => r.json())
       .then(data => setSubscriptions(Array.isArray(data) ? data : []))
       .catch(() => {});

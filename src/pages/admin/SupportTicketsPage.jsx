@@ -5,7 +5,7 @@ export default function SupportTicketsPage() {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/tickets')
+    fetch('https://kolaygider-api.onrender.com/tickets')
       .then(r => r.json())
       .then(data => setTickets(Array.isArray(data) ? data : []))
       .catch(() => {});

@@ -19,7 +19,7 @@ export default function Login() {
     
     try {
       // Check Admin
-      const adminRes = await fetch('http://localhost:3000/super_admin');
+      const adminRes = await fetch('https://kolaygider-api.onrender.com/super_admin');
       const admin = await adminRes.json();
       
       if (admin.email === email && (password === '123456' || password === admin.password)) {
@@ -29,7 +29,7 @@ export default function Login() {
       }
       
       // Check Business
-      const bizRes = await fetch(`http://localhost:3000/businesses?email=${email}`);
+      const bizRes = await fetch(`https://kolaygider-api.onrender.com/businesses?email=${email}`);
       const bizList = await bizRes.json();
       
       if (bizList.length > 0) {

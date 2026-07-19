@@ -29,7 +29,7 @@ export default function Register() {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/businesses', {
+      const response = await fetch('https://kolaygider-api.onrender.com/businesses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newBusiness)

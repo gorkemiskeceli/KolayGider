@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:3000/recurring_payments';
+const API_URL = 'https://kolaygider-api.onrender.com/recurring_payments';
 
 export const fetchRecurringPayments = createAsyncThunk('recurring/fetchRecurringPayments', async (businessId) => {
   const response = await fetch(`${API_URL}?businessId=${businessId}`);

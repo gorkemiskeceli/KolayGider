@@ -24,7 +24,7 @@ export default function AdminDashboard() {
       dispatch(fetchBusinesses());
     }
     // Fetch mock tickets directly
-    fetch('http://localhost:3000/tickets').then(r => r.json()).then(data => setTickets(data)).catch(() => {});
+    fetch('https://kolaygider-api.onrender.com/tickets').then(r => r.json()).then(data => setTickets(data)).catch(() => {});
   }, [dispatch, status]);
 
   const activeBusinesses = businesses.filter(b => b.status === 'active');

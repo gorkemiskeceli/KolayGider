@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:3000/audit_logs';
+const API_URL = 'https://kolaygider-api.onrender.com/audit_logs';
 
 export const fetchAuditLogs = createAsyncThunk('audit/fetchAuditLogs', async () => {
   const response = await fetch(API_URL);

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:3000/expenses';
+const API_URL = 'https://kolaygider-api.onrender.com/expenses';
 
 // Strict Tenant Isolation: Always pass businessId
 export const fetchExpenses = createAsyncThunk('expense/fetchExpenses', async (businessId) => {
